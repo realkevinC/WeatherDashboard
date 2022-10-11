@@ -17,23 +17,29 @@
 <main>
 <div class="container-fluid">
     <div class="row">
+        <!-- Search bar leftside -->
         <div class="col-sm-4">
             <div class="row"">
-                <p>Search for a City:</p>
                 <form>
-                    <input class="form-control" type="text" placeholder="City" aria-label="Search">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </form>
+                    <label for="searchCity">Search for a City:</label>
+                    <div class="form-row">
+                        <input class="form-control" type="text" placeholder="City" aria-label="Search">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                 </form>
+            <ul id="cityList"></ul>
             </div>
+        </div>
+        <!-- rightside -->
+        <div id="content-right" class="">
+            <div id="weatherBox"></div>
+            <div id="fiveDayForecastBox" class=""></div>
         </div>
     </div>
 </div>
 
 
-
 </main>
-
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
