@@ -53,7 +53,7 @@ $(".searchButton").click(function (event){
             let lon = results[0].lon;
 
             console.log(lat, lon);
-            var weatherAPIurl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`;
+            var weatherAPIurl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`;
             console.log(weatherAPIurl)
             // Now we have data and can make a SECOND request using that data that we got from the first request
             fetch(weatherAPIurl)
@@ -63,20 +63,34 @@ $(".searchButton").click(function (event){
             .then(function(results){
                 // dig into the data that we got back
                 console.log(results)
+                    $('#city').text(searchInput);
+                    $('#currentday').text("(" + moment().format("MM/DD/YYYY") + ")");
+                    $('#picture').attr("src", `https://openweathermap.org/img/wn/${results.list[4].weather[0].icon}@2x.png`);
+                    console.log(results.list[4].weather[0].icon)
+                    var temp = $(".temp").text(Math.floor(results.list[4].main.temp));
+                    // var temp = $(".temp").text(Math.floor(results.list[4].main.temp) * 9/5 - 459);
+                    var wind = $(".wind").text(results.list[4].wind.speed);
+                    var humidity = $(".humidity").text(results.list[4].main.humidity);
+
+
+
+
                 // create new elements
                 // add attributes or text content
-                for(i=4; i < results.list.length; i= i + 8){
-                    console.log(i);
 
+                // for(i=4; i < results.list.length; i= i + 8){
+                //     console.log(i);
 
-                    var temp = $(".temp").text(parseInt(results.list[i].main.temp) * 9/5 - 459);
-                    var temp = Math.floor(temp)
-                    var wind = $(".wind").text(`Wind: ${results.list[i].wind.speed}`);
-                    var humidity = $(".humidity").text(`Humidity: ${results.list[i].main.humidity}`);
+                //     var temp = $(".temp").text(parseInt(results.list[i].main.temp) * 9/5 - 459);
+                    // var temp = Math.floor(temp)
+                //     var wind = $(".wind").text(`Wind: ${results.list[i].wind.speed}`);
+                //     var humidity = $(".humidity").text(`Humidity: ${results.list[i].main.humidity}`);
+
                     // var container = $("<div>").append(temp);
-                    // console.log(container);
-                    // $("#contentRight").append(container);
-                }
+                    // var weatherCard = document.createElement('div')
+                    // weatherCard.textContent = 
+                    // $("#fiveDayForecastBox").append(weatherCard);
+                // }
 
 
                 // $(".temperature").text(results.list[12].main.temp)
