@@ -63,17 +63,31 @@ $(".searchButton").click(function (event){
             .then(function(results){
                 // dig into the data that we got back
                 console.log(results)
-                    $('#city').text(searchInput);
-                    $('#currentday').text("(" + moment().format("MM/DD/YYYY") + ")");
-                    $('#picture').attr("src", `https://openweathermap.org/img/wn/${results.list[4].weather[0].icon}@2x.png`);
-                    console.log(results.list[4].weather[0].icon)
-                    var temp = $(".temp").text(Math.floor(results.list[4].main.temp));
-                    // var temp = $(".temp").text(Math.floor(results.list[4].main.temp) * 9/5 - 459);
-                    var wind = $(".wind").text(results.list[4].wind.speed);
-                    var humidity = $(".humidity").text(results.list[4].main.humidity);
-
-
-
+                // weatherbox created dynamic
+                $('#currentWeatherBox').empty()
+                var spanEl = $('<span>').text("(" + moment().format("MM/DD/YYYY") + ")");
+                var imgEl = $('<img>').attr("src", `https://openweathermap.org/img/wn/${results.list[4].weather[0].icon}@2x.png`);
+                $(spanEl).append(imgEl);
+                var h3El = $('<h3>').text(results.city.name);
+                $(h3El).append(spanEl);
+                $('#currentWeatherBox').append(h3El);
+                
+                var pEl = $('<p>').text('Temp: ');
+                spanEl = $('<span>').text(results.list[4].main.temp + '°F');
+                $(pEl).append(spanEl);
+                $('#currentWeatherBox').append(pEl);
+                
+                var pEl = $('<p>').text('Wind: ');
+                spanEl = $('<span>').text(results.list[4].wind.speed + 'mph');
+                $(pEl).append(spanEl);
+                $('#currentWeatherBox').append(pEl);
+                
+                var pEl = $('<p>').text('Humidity: ');
+                spanEl = $('<span>').text(results.list[4].main.humidity + '%');
+                $(pEl).append(spanEl);
+                $('#currentWeatherBox').append(pEl);
+                
+                // 5 Day forecast 
 
                 // create new elements
                 // add attributes or text content
