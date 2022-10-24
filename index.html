@@ -19,21 +19,19 @@
     <div class="row">
         <!-- Search bar leftside -->
         <div class="col-sm-4">
-            <div class="row"">
+            <div class="row justify-content-center">
                 <form>
                     <label for="searchCity">Search for a City:</label>
                     <div class="form-row">
                         <input class="form-control searchInput" type="text" placeholder="City" aria-label="Search">
                         <button class="btn btn-primary searchButton" type="submit">Search</button>
                     </div>
+                    <ul class="col" id="cityList"></ul>
                  </form>
-            <ul id="cityList">
-
-            </ul>
             </div>
         </div>
         <!-- rightside -->
-        <div id="contentRight">
+        <div class="col" id="contentRight">
             <div id="currentWeatherBox">
                 <!-- <div id="city">New York <span id="currentday"></span> <img id="picture" style="width:20px; height:20px" src="" alt=""></div>
                 <div>Temp: <span class="temp">39</span></div>
@@ -42,7 +40,7 @@
             </div>
             <div id="fiveDayForecastContainer">
                 <h4>5-Day Forecast</h4>
-                <div class="row d-flex" id="fiveDayForecastBox">
+                <div class="d-flex" id="fiveDayForecastBox">
                     <!-- <div class="box">
                         <div class="date">10/23/2022</div>
                         <div><img src="" alt=""></div>

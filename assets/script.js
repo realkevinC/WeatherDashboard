@@ -24,7 +24,6 @@ $(".searchButton").click(function (event){
     var searchInput = $(".searchInput").val();
     console.log(searchInput);
     
-    var listItem = "<ul>"
     $("#cityList").append($("<li>").text(searchInput));
     var cityAPIurl = `api.openweathermap.org/data/2.5/forecast?q=${searchInput}&appid=${APIKey}`;
     var geoCode = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&appid=${APIKey}`;
@@ -158,14 +157,13 @@ $(".searchButton").click(function (event){
             // We create a new <li> and add the city as Text Content
             var listItem = $("<li>").text(savedCities[i])
             // Where does the text come from? 
-            
             // we append it to the <ul> container
             $("#cityList").append(listItem)
         }
     }
     
     // Initilization
-    localStorage.setItem("saved", JSON.stringify([]));
+    localStorage.setItem("saved", JSON.stringify(["New York", "Miami", "San Francisco", "Dallas"]));
     
     load();
     
