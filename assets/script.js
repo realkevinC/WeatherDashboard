@@ -6,9 +6,6 @@ var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 var lat = "";
 var lon = "";
 
-//var cityAPIurl = `api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${APIKey}`;
-
-
 var weatherAPIurl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
 
 console.log(weatherAPIurl)
@@ -88,22 +85,34 @@ $(".searchButton").click(function (event){
                 $('#currentWeatherBox').append(pEl);
                 
                 // 5 Day forecast 
+                $(fiveDayForecastBox).empty();
+                for(i=4; i < results.list.length; i= i + 8){
+                    console.log(i);
+                    var colEl = $('<div>').addClass('col pl-0');
+                    var cardEl = $('<div>').addClass('card');
+                    var cardBodyEl = $('<div>').addClass('card-body d-flex flex-column custom-card-body p-1');
 
+                    var h5El = $('<h5>').text(moment(results.list[i].dt_txt, 'YYYY-MM-DD').format('MM/DD/YYYY'));
+                    $(cardBodyEl).append(h5El);
+                    
+                    var imgEl = $('<img>').attr("src", `https://openweathermap.org/img/wn/${results.list[i].weather[0].icon}@2x.png`)
+                    
+                    var pEl = $('<p>').text('Temp: ' + Math.floor(results.list[i].main.temp) + '°F');
+                    $(cardBodyEl).append(pEl);
+            
+                    pEl = $('<p>').text('Wind: ' + results.list[i].wind.speed + ' mph');
+                    $(cardBodyEl).append(pEl);
+            
+                    pEl = $('<p>').text('Humidity: ' + results.list[i].main.humidity + '%');
+                    $(cardBodyEl).append(pEl);
+            
+                    $(cardEl).append(cardBodyEl);
+                    $(colEl).append(cardEl);
+                    $(fiveDayForecastBox).append(colEl);
+                }
                 // create new elements
-                // add attributes or text content
-
-                // for(i=4; i < results.list.length; i= i + 8){
-                //     console.log(i);
-
-                //     var temp = $(".temp").text(parseInt(results.list[i].main.temp) * 9/5 - 459);
-                    // var temp = Math.floor(temp)
-                //     var wind = $(".wind").text(`Wind: ${results.list[i].wind.speed}`);
-                //     var humidity = $(".humidity").text(`Humidity: ${results.list[i].main.humidity}`);
-
-                    // var container = $("<div>").append(temp);
-                    // var weatherCard = document.createElement('div')
-                    // weatherCard.textContent = 
-                    // $("#fiveDayForecastBox").append(weatherCard);
+                // add attributes or text content     
+            
                 // }
 
 
@@ -113,7 +122,6 @@ $(".searchButton").click(function (event){
 
                 // append it to the DOM
 
-                
             })
         })
         .catch(function(error) {   // <-- When we get an ERROR back
@@ -157,7 +165,7 @@ $(".searchButton").click(function (event){
     }
     
     // Initilization
-    localStorage.setItem("saved", JSON.stringify(["New York"]));
+    localStorage.setItem("saved", JSON.stringify([]));
     
     load();
     
