@@ -12,7 +12,8 @@ N/A
 ## Link
 
 https://github.com/realkevinC/WeatherDashboard
-<img src="/Users/kevinchen/bcs/challenges/weatherDashboard/assets/screencapture-127-0-0-1-5500-weatherDashboard-index-html-2022-10-24-00_15_23.png">
+https://realkevinc.github.io/WeatherDashboard/
+<img src="./assets/screencapture-127-0-0-1-5500-weatherDashboard-index-html-2022-10-24-00_15_23.png">
 
 ## Usage
 
