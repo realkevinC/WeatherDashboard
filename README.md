@@ -11,7 +11,7 @@ N/A
 
 ## Link
 
-https://github.com/realkevinC/WeatherDashboard /n
+https://github.com/realkevinC/WeatherDashboard<br />
 https://realkevinc.github.io/WeatherDashboard/
 <img src="./assets/screencapture-127-0-0-1-5500-weatherDashboard-index-html-2022-10-24-00_15_23.png">
 
