@@ -25,8 +25,8 @@ $(".searchButton").click(function (event){
     console.log(searchInput);
     
     $("#cityList").append($("<li>").text(searchInput));
-    var cityAPIurl = `api.openweathermap.org/data/2.5/forecast?q=${searchInput}&appid=${APIKey}`;
-    var geoCode = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&appid=${APIKey}`;
+    // var cityAPIurl = `api.openweathermap.org/data/2.5/forecast?q=${searchInput}&appid=${APIKey}`;
+    var geoCode = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&appid=${APIKey}`;
     // save the new input value to localStorage
     // 1. we have to get the item or data
     // 2. we have to convert it (JSON.parse()) to a JS object
